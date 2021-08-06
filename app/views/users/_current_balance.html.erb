@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <h3>Investment</h3>
+  <hr class="my-4">
+  <h1 class="display-4"><span>$</span><%= @balance %></h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Deposit</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deposit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <%= form_tag deposit_path, method: :get do %>       
+        <%= number_field_tag :number %>       
+       
+        <%= button_tag type: :submit, class: "btn btn-outline-info my-2 my-sm-0" do %>
+          <%= 'add' %>
+        <% end %>
+      <% end %>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+

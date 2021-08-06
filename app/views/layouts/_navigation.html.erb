@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Trader App', root_path, class: "navbar-brand" %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% unless @admin %>
+      <li class="nav-item <%= 'active' if request.path == my_portfolio_path %>">
+        <%= link_to 'My Portfolio', my_portfolio_path, class: 'nav-link' %>
+      </li>
+
+      <li class="nav-item <%= 'active' if request.path == stocks_owned_index_path %>">
+        <%= link_to 'Sell History', stocks_owned_index_path, class: 'nav-link' %>
+      </li>
+        
+      <li class="nav-item <%= 'active' if request.path == stocks_to_sell_index_path %>">
+        <%= link_to 'Purchase History', stocks_to_sell_index_path, class: 'nav-link' %>
+      </li>
+      <% end %>
+    </ul>
+
+    <ul class="navbar-nav my-2 my-lg-0">
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+        Pofile
+        </a>
+      
+        <div class="dropdown-menu dropdown-menu-right">
+      
+          <%= fa_icon "user-circle 2x", class:"dropdown-item"  %> 
+          
+          <div class="dropdown-divider"></div>
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item"%>
+
+          <div class="dropdown-divider"></div>
+          <%= link_to 'Logout', destroy_user_session_path, class: "dropdown-item", method: :delete %>
+          
+        </div>
+      </li>
+    </lu>
+  </div>
+</nav>

@@ -1,0 +1,30 @@
+<h1>Admin</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+      <th scope="col">approval</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tracked_user.each do |user| %>
+    <% unless user.admin %>
+    <tr>
+      <th scope="row"><%= user.email %></th>
+      <td><%= user.status %></td>
+      <td>
+      <% if user.status == false %>
+      <%= link_to user.status, pending_path(user), method: :post, class: "btn btn-outline-warning" %>
+      <% else %>
+        <span>Approved</span>
+      <% end %>
+
+      </td>
+    </tr>
+    <% end %>
+
+  <% end %>
+  </tbody>
+</table>
