@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'admin/index'
   resources :user_stocks, only:[:create, :destroy]
-  devise_for :users
+  
+  devise_for :users, controllers: { confirmations: 'confirmations' }
   root 'pages#index'
   get 'stocks_owned/index'
   get 'stocks_to_sell/index' 
