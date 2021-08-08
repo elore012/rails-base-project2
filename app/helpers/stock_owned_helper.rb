@@ -1,0 +1,2 @@
+module StockOwnedHelper
+end

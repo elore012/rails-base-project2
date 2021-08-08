@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     @admin = current_user.admin
   end
 
+  def application
+    @admin = current_user.admin
+  end
+
   protected
 
   def configure_permitted_parameters

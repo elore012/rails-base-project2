@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_070025) do
+ActiveRecord::Schema.define(version: 2021_08_07_015257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,14 @@ ActiveRecord::Schema.define(version: 2021_08_06_070025) do
     t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["admin_id"], name: "index_admins_on_admin_id"
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_admins_on_user_id"
   end
 
@@ -32,12 +39,49 @@ ActiveRecord::Schema.define(version: 2021_08_06_070025) do
     t.index ["user_id"], name: "index_investments_on_user_id"
   end
 
+  create_table "owned_stock_records", force: :cascade do |t|
+    t.string "ticker"
+    t.string "company"
+    t.decimal "price"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_owned_stock_records_on_user_id"
+  end
+
+  create_table "sold_stock_records", force: :cascade do |t|
+    t.string "ticker"
+    t.string "company"
+    t.decimal "price"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sold_stock_records_on_user_id"
+  end
+
+  create_table "stock_transaction_owneds", force: :cascade do |t|
+    t.string "ticker"
+    t.string "company"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.string "ticker"
     t.string "company"
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_stock_histories", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "stock_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_id"], name: "index_user_stock_histories_on_stock_id"
+    t.index ["user_id"], name: "index_user_stock_histories_on_user_id"
   end
 
   create_table "user_stocks", force: :cascade do |t|
@@ -74,6 +118,10 @@ ActiveRecord::Schema.define(version: 2021_08_06_070025) do
   add_foreign_key "admins", "admins"
   add_foreign_key "admins", "users"
   add_foreign_key "investments", "users"
+  add_foreign_key "owned_stock_records", "users"
+  add_foreign_key "sold_stock_records", "users"
+  add_foreign_key "user_stock_histories", "stocks"
+  add_foreign_key "user_stock_histories", "users"
   add_foreign_key "user_stocks", "stocks"
   add_foreign_key "user_stocks", "users"
 end

@@ -10,11 +10,11 @@
       </li>
 
       <li class="nav-item <%= 'active' if request.path == stocks_owned_index_path %>">
-        <%= link_to 'Sell History', stocks_owned_index_path, class: 'nav-link' %>
+        <%= link_to 'Buy History', stocks_owned_index_path, class: 'nav-link' %>
       </li>
         
       <li class="nav-item <%= 'active' if request.path == stocks_to_sell_index_path %>">
-        <%= link_to 'Purchase History', stocks_to_sell_index_path, class: 'nav-link' %>
+        <%= link_to 'Sell History', stocks_to_sell_index_path, class: 'nav-link' %>
       </li>
       <% end %>
     </ul>

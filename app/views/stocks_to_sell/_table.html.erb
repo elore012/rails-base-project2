@@ -1,4 +1,4 @@
-<% unless @owned_stock_records.empty? %>
+<% unless @sold_stock_records.empty? %>
   <div class="row">
     <div class="col-9">
       <table class="table table-bordered table-hover">
@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @owned_stock_records.each do |stock| %>
+        <% @sold_stock_records.each do |stock| %>
           <tr>
             <th scope="row"><%= stock.ticker %></th>
             <td><%= stock.company %></td>
@@ -26,3 +26,4 @@
 <% else %>
   <h3 class = "text-center">No record to display</h3>
 <% end %>
+

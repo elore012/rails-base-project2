@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  get 'admin/index'
   resources :user_stocks, only:[:create, :destroy]
   
-  devise_for :users, controllers: { confirmations: 'confirmations' }
+  devise_for :admins
+  
+  devise_for :users
+  resources :users, except: :create
+  post 'create_user' => 'users#create', as: :create_user 
+  
+ 
   root 'pages#index'
   get 'stocks_owned/index'
   get 'stocks_to_sell/index' 
@@ -14,6 +19,6 @@ Rails.application.routes.draw do
 
   get 'admin', to: 'admin#index'
 
-  post 'pending', to: 'pages#pending'
+  get 'pending', to: 'pages#pending' 
 
 end

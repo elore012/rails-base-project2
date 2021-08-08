@@ -3,7 +3,9 @@
   <hr class="my-4">
   <h1 class="display-4"><span>$</span><%= @balance %></h1>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Deposit</button>
+  <% if @user_status %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Deposit</button>
+  <% end %>
 </div>
 
 <!-- Modal -->
@@ -25,7 +27,7 @@
         <% end %>
       <% end %>
 
-
+   
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

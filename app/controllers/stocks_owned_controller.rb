@@ -1,5 +1,5 @@
 class StocksOwnedController < ApplicationController
   def index
-    @sold_stocks = current_user.stocks
+    @owned_stock_records = current_user.owned_stock_records
   end
 end

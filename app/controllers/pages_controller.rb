@@ -7,16 +7,25 @@ class PagesController < ApplicationController
   end
 
   def pending
-    if true
+  
+    # user = User.find_by(id: params[:user.id])
+    # user.status = true
+    # user.save
+    # flash[:notice] = "true"
+    # redirect_to root_path
 
-      user = User.all
-      user.first.status = true
-      user.first.save
-      
+    if params[:user_id].present?
+
+      # user = User.find_by(id: params[user.id])
+      # user.status = true
+
+      # user = User.first
+      # user.status = true
+      # user.save
       flash[:notice] = "true"
       redirect_to root_path
     else
-      flash[:notice] = " no user"
+      flash[:notice] = " no param detected"
       redirect_to root_path
     end
   end
