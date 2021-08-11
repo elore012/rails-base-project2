@@ -2,10 +2,16 @@
   <div class="card card-header col-sm-12">
     <h3><strong><%= @stock.company %> (<%= @stock.ticker.upcase %>)</strong></h3>  
     <hr>
+
     <strong>Price: </strong> <%= @stock.price %>
-    <% if @user_status %>
-      <%= link_to 'Buy', user_stocks_path(user: current_user, ticker: @stock.ticker), class: "btn btn-sm btn-success col-sm-2", method: :post %>
-    <% end %>
+
+    <div class="d-flex flex-row-reverse bd-highlight">
+     <% if @user_status %>
+        <%= link_to 'Buy', user_stocks_path(user: current_user, ticker: @stock.ticker), class: "btn btn-sm btn-success col-sm-2", method: :post %>
+      <% else %>
+        <button type="button" class="btn btn-sm btn-secondary col-sm-2" disabled>Buy</button>
+      <% end %>
+    </div> 
   </div>
 <% end %>
 

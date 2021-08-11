@@ -4,17 +4,15 @@ class PagesController < ApplicationController
     @admin = current_user.admin
     @user = current_user
     @tracked_user = User.all
+    @owned_stock_records = current_user.owned_stock_records
+    @sold_stock_records = current_user.sold_stock_records
   end
 
   def pending
-  
-    # user = User.find_by(id: params[:user.id])
-    # user.status = true
-    # user.save
-    # flash[:notice] = "true"
-    # redirect_to root_path
-
-    if params[:user_id].present?
+    # @user = User.all
+    # if params[:id].present?
+    # @user.status = true
+    # @user.save
 
       # user = User.find_by(id: params[user.id])
       # user.status = true
@@ -22,11 +20,11 @@ class PagesController < ApplicationController
       # user = User.first
       # user.status = true
       # user.save
-      flash[:notice] = "true"
+      flash[:notice] = "true "
       redirect_to root_path
-    else
-      flash[:notice] = " no param detected"
-      redirect_to root_path
-    end
+    # else
+    #   flash[:notice] = " no param detected"
+    #   redirect_to root_path
+    # end
   end
 end

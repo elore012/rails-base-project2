@@ -10,15 +10,16 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= render 'layouts/navigation' %>
+    <% else %>
+      <h2 class = "text-center">Trader App</h2>
+    <% end%>
 
-  <% if current_user %>
-    <%= render 'layouts/navigation' %>
-  <% end %>
-
-  <div class="container">
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-  </div>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
 
 
   </body>

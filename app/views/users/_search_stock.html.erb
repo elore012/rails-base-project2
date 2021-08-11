@@ -4,13 +4,11 @@
       <div class="p-2 flex-grow-1 no-right-padding">
         <%= text_field_tag :stock, params[:stock], placeholder: "Ticker symbol", autofocus: true, class: "form-control mr-sm-2" %>
       </div>
+
       <div class="p-2 flex-shrink-1 no-left-padding">
- 
         <%= button_tag type: :submit, class: "btn btn-outline-info my-2 my-sm-0" do %>
           <%= 'search' %>
         <% end %>
-   
-
       </div>
     </div>
   <% end %>
