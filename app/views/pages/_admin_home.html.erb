@@ -26,6 +26,7 @@
           <th scope="row"><%= user.id %></th>
           <td><%= user.status %></td>
           <td>
+          
             <% unless user.status %>  
               <%= button_tag status_path,  method: :get, class: "btn btn-outline-info my-2 my-sm-0" do %>
                 <%= 'Pending' %>
@@ -34,6 +35,9 @@
               <span>Approved</span>
             <% end %>
           </td>
+
+
+
           <td>
             <% if user.status %>
               <%= render 'pages/transaction' %>
