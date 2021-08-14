@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   get 'deposit', to:  'investments#add'
   get 'admin', to: 'admin#index'
   
-  get 'status', to: 'pages#pending' 
+  get 'status/id', to: 'pages#pending' 
 
 end

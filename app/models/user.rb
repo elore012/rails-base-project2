@@ -13,6 +13,11 @@ class User < ApplicationRecord
   validates_presence_of :last_name
   validates :investment, numericality: { greater_than_or_equal_to: 0 }
 
+  def stock_already_exist?(ticker_symbol)
+    stock = Stock.check_db(ticker_symbol)
+    return false unless stock
+    stocks.where(id: stock.id).exists?
+  end
   
 
   # def full_name

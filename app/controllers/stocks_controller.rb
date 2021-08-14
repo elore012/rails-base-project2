@@ -6,6 +6,7 @@ class StocksController < ApplicationController
         @tracked_stocks = current_user.stocks   
         @balance = current_user.investment
         @user_status = current_user.status
+      
         render 'users/my_portfolio'
       else
         flash[:alert] = "Please enter a valid symbol"
