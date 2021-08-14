@@ -1,11 +1,11 @@
 <div class="jumbotron">
   <h3>Investment</h3>
   <hr class="my-4">
-  <h1 class="display-4"><span>$</span><%= @balance %></h1>
+  <h1 class="display-4"><span>$</span><%= '%.2f' % @balance %></h1>
   <!-- Button trigger modal -->
-  <% if @user_status %>
+  
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Deposit</button>
-  <% end %>
+
 </div>
 
 <!-- Modal -->

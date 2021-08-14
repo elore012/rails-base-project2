@@ -7,7 +7,7 @@
             <th scope="col">Ticker</th>
             <th scope="col">Company</th>
             <th scope="col">Price</th>
-            <th scope="col">Date of Purchase</th>
+            <th scope="col">Date of Sell</th>
           </tr>
         </thead>
         <tbody>
@@ -15,7 +15,7 @@
           <tr>
             <th scope="row"><%= stock.ticker %></th>
             <td><%= stock.company %></td>
-            <td><%= stock.price %></td>
+            <td><%= '%.2f' % stock.price %></td>
             <td><%= stock.created_at.strftime("%d of %B, %Y") %></td>
           </tr>
           <% end %>

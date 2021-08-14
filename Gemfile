@@ -7,6 +7,7 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
 
+
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg'
 gem 'puma', '~> 4.1'
@@ -40,4 +41,9 @@ group :test do
   gem 'webmock'
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'capybara'
+end
+
+group :production do
+  gem 'pg'
 end
